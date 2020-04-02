@@ -21,17 +21,19 @@ module.exports = {
         ]
       },
       {
-        test: /\.jsx?$/,
+        test: /\.(ts|js|tsx)?$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
-        query: {
-          presets: ["@babel/preset-env", "@babel/preset-react"]
-        }
+        loader: "babel-loader"
+      },
+      {
+        enforce: "pre",
+        test: /\.js$/,
+        loader: "source-map-loader"
       }
     ]
   },
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".jsx", ".tsx", ".ts", ".js"]
   },
   devtool: "source-map"
 };
