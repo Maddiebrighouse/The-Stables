@@ -1,27 +1,44 @@
 h1 {
   font-family: "Astloch", cursive;
   font-weight: 400;
-  font-size: 48px;
-  line-height: 59px;
+  font-size: 36px;
+  margin-bottom: 5px;
 }
 
-p {
+.strike {
   font-family: "Open Sans Condensed", sans-serif;
   font-weight: 300;
   font-size: 24px;
-  line-height: 33px;
+  margin: 0;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  background-color: white;
+  border: none;
 }
 
-.who-container {
+.strike::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background-color: black;
+  position: relative;
+  bottom: 13px;
+  width: 0;
+}
+
+.strike:hover::after {
+  width: 100%;
+}
+
+.filter-container {
   background: #ffffff;
   border: 1px solid #000000;
   box-sizing: border-box;
-  width: 90%;
   margin-left: 5%;
-  padding-left: 5%;
-  padding-right: 5%;
-  padding-top: 1%;
-  padding-bottom: 1%;
+  padding-left: 2%;
+  width: 600px;
 }
 @font-face {
   font-family: "Open Sans Condensed", sans-serif;

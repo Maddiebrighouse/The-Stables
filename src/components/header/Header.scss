@@ -1,3 +1,22 @@
-li {
-  color: green;
+.title {
+  font-family: "Astloch", cursive;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 59px;
+}
+
+.header-container {
+  margin-left: 5%;
+}
+h3 {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 33px;
+}
+
+@font-face {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-family: "Astloch", cursive;
+  src: url("https://fonts.googleapis.com/css2?family=Astloch&family=Open+Sans+Condensed&display=swap");
 }

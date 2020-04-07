@@ -1,0 +1,61 @@
+@font-face {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-family: "Astloch", cursive;
+  src: url("https://fonts.googleapis.com/css2?family=Astloch&family=Open+Sans+Condensed&display=swap");
+}
+
+.gallery-container {
+  background: #ffffff;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  width: 90%;
+  margin-left: 5%;
+  padding-top: 2%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.filter {
+  background: #ffffff;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  margin-left: 5%;
+  margin-bottom: 1%;
+  height: 30px;
+  width: 100px;
+}
+
+.filter-text {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  margin: 0;
+  margin-top: 2px;
+  padding-left: 30px;
+}
+
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.day {
+  font-family: "Astloch", cursive;
+  font-weight: 400;
+  font-size: 30px;
+  margin: 0;
+}
+.day-comment {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  color: black;
+  margin: 0;
+  padding: 2px;
+}
+
+img {
+  border: 1px solid #000000;
+}
