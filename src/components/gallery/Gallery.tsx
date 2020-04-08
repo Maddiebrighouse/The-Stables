@@ -1,22 +1,30 @@
-import React from "react";
+import * as React from "react";
 import Filter from "../filter/Filter";
 import "./Gallery.scss";
 
-class Gallery extends React.Component<{}> {
+type State = {
+  filter: boolean;
+  err: string;
+};
+class Gallery extends React.Component<{}, State> {
   constructor({}) {
     super({});
     this.state = {
-      filterButton: false,
-      err: ""
+      err: "",
+      filter: false
     };
   }
+
   render() {
     return (
       <div className="gallery-body">
-        {/* <button onClick((event: React.MouseEvent<HTMLElement>) => {this.setState(this.state.filter: true)}) className="filter">
+        <button
+          onClick={() => this.setState({ filter: true })}
+          className="filter"
+        >
           <p className="filter-text">filter</p>
-        </button> */}
-        <Filter />
+        </button>
+        {this.state.filter && <Filter />}
         <div className="gallery-container">
           <div className="gallery-item">
             <img src="https://via.placeholder.com/150" alt="placeholder" />

@@ -31,6 +31,9 @@ h1 {
 .strike:hover::after {
   width: 100%;
 }
+.strike:focus {
+  outline: none;
+}
 
 .filter-container {
   background: #ffffff;
@@ -38,7 +41,9 @@ h1 {
   box-sizing: border-box;
   margin-left: 5%;
   padding-left: 2%;
-  width: 600px;
+  width: 430px;
+  z-index: 2;
+  margin-bottom: 5px;
 }
 @font-face {
   font-family: "Open Sans Condensed", sans-serif;
