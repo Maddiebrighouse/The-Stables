@@ -5,6 +5,9 @@ import "./Who.scss";
 const Who = () => {
   return (
     <div className="who-container">
+      <div className="exit">
+        <a href="/">X</a>
+      </div>
       <h1>The Stables is home to 5 flat mates and a giant horse lantern...</h1>
       <p>
         In the current circumstance, people living here at The Stables are...
