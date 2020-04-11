@@ -30,17 +30,24 @@ p {
 
 .exit {
   position: absolute;
-  right: 10%;
-  margin-top: 40px;
+  right: 45px;
+  margin-top: 19px;
 }
 
 .exit > a {
   font-size: 48px;
   text-decoration: none;
   color: black;
+  font-family: "Raleway", sans-serif;
+  transform-origin: 0 0;
+  font-weight: 100;
+  transform: scaleX(1.4);
+  transform-origin: 0 0;
+  display: inline-block;
 }
 @font-face {
   font-family: "Open Sans Condensed", sans-serif;
   font-family: "Astloch", cursive;
-  src: url("https://fonts.googleapis.com/css2?family=Astloch&family=Open+Sans+Condensed&display=swap");
+  font-family: "Raleway", sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Astloch&family=Open+Sans+Condensed&family=Raleway:wght@300&display=swap");
 }
