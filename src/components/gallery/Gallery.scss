@@ -30,6 +30,25 @@
   width: 100px;
 }
 
+.filter::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background-color: black;
+  position: relative;
+  bottom: 20px;
+  width: 0;
+}
+
+.filter:hover::after {
+  width: 55px;
+  left: 14px;
+}
+
+.filter:focus {
+  outline: none;
+}
+
 .filter-text {
   font-family: "Open Sans Condensed", sans-serif;
   font-weight: 300;
