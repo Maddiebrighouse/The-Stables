@@ -22,6 +22,22 @@ p {
   padding-right: 5%;
   padding-top: 1%;
   padding-bottom: 1%;
+  margin-top: 40px;
+  margin-bottom: 5%;
+  position: absolute;
+  z-index: 2;
+}
+
+.exit {
+  position: absolute;
+  right: 10%;
+  margin-top: 40px;
+}
+
+.exit > a {
+  font-size: 48px;
+  text-decoration: none;
+  color: black;
 }
 @font-face {
   font-family: "Open Sans Condensed", sans-serif;
