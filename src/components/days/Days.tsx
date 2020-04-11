@@ -1,130 +1,131 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "./Days.scss";
 
 const Days = () => {
   return (
     <div className="days-container">
-      <a className="day-square" href="/day1">
+      <Link to="days/:1" className="day-square">
         1
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         2
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         3
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         4
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         5
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         6
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         7
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         8
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         9
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         10
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         1
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         2
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         3
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         4
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         5
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         6
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         7
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         8
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         9
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         10
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         1
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         2
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         3
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         4
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         5
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         6
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         7
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         8
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         9
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         10
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         1
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         2
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         3
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         4
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         5
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         6
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         7
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         8
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         9
-      </a>
-      <a className="day-square" href="/day1">
+      </Link>
+      <Link to="days/:1" className="day-square">
         10
-      </a>
+      </Link>
     </div>
   );
 };
