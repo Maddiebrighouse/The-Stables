@@ -5,7 +5,8 @@ module.exports = {
   entry: "./src/index.js",
   output: {
     path: path.join(__dirname, "public"),
-    filename: "bundle.js"
+    filename: "bundle.js",
+    publicPath: "/"
   },
   module: {
     rules: [
@@ -34,6 +35,9 @@ module.exports = {
         loader: "source-map-loader"
       }
     ]
+  },
+  devServer: {
+    historyApiFallback: true
   },
   resolve: {
     extensions: [".jsx", ".tsx", ".ts", ".js"]
