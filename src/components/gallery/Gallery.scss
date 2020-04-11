@@ -3,12 +3,15 @@
   font-family: "Astloch", cursive;
   src: url("https://fonts.googleapis.com/css2?family=Astloch&family=Open+Sans+Condensed&display=swap");
 }
-
+.gallery-body {
+  margin-top: 40px;
+  width: 95%;
+  position: absolute;
+}
 .gallery-container {
   background: #ffffff;
   border: 1px solid #000000;
   box-sizing: border-box;
-  width: 90%;
   margin-left: 5%;
   padding-top: 2%;
   display: flex;
@@ -22,8 +25,8 @@
   border: 1px solid #000000;
   box-sizing: border-box;
   margin-left: 5%;
-  margin-bottom: 1%;
-  height: 30px;
+  margin-bottom: 2px;
+  height: 40px;
   width: 100px;
 }
 
