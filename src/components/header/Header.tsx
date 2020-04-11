@@ -21,10 +21,17 @@ const Header = () => {
   console.log(days);
   return (
     <div className="header-container">
-      <h1 className="title">Isolation at The Stables</h1>
-      <p>{`${days} days`}</p>
-      <p>{`${hours} days`}</p>
+      <a href="/">
+        <h1 className="title">Isolation at The Stables</h1>
+      </a>
+      {/* <p>{`${days} days`}</p>
+      <p>{`${hours} days`}</p> */}
       <h3>13 days 12 hours 2 minutes 20 seconds</h3>
+      <img
+        className="misty"
+        src="https://res.cloudinary.com/isolationstables/image/upload/v1586579283/Isolation/misty/Misty_vbrqni.jpg"
+        alt="Image of a horse laten"
+      />
     </div>
   );
 };

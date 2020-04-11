@@ -3,10 +3,23 @@
   font-weight: 400;
   font-size: 48px;
   line-height: 59px;
+  text-align: left;
+  color: black;
 }
 
+.misty {
+  top: -28px;
+  right: -29px;
+  position: absolute;
+  width: 35%;
+  border: none;
+}
 .header-container {
   margin-left: 5%;
+}
+
+.header-container > a {
+  text-decoration: none;
 }
 h3 {
   font-family: "Open Sans Condensed", sans-serif;
