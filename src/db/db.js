@@ -6,7 +6,7 @@ const uri = `mongodb+srv://${process.env.USERNAMEDB}:${
 }@isolationatthestables-fn9tr.mongodb.net/test?retryWrites=true&w=majority`;
 
 module.exports = {
-  getJobs: async (values) => {
+  getPhotos: async (values) => {
     const clientPromise = MongoClient.connect(uri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,

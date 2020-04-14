@@ -9,8 +9,6 @@
   position: absolute;
 }
 .gallery-container {
-  background: #ffffff;
-  border: 1px solid #000000;
   box-sizing: border-box;
   margin-left: 5%;
   padding-top: 2%;
@@ -79,4 +77,5 @@
 
 img {
   border: 1px solid #000000;
+  width: 400px;
 }
