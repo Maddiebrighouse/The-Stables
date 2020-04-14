@@ -6,7 +6,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, "public"),
     filename: "bundle.js",
-    publicPath: "/"
+    publicPath: "/",
   },
   module: {
     rules: [
@@ -14,33 +14,38 @@ module.exports = {
         test: /\.(css|scss)$/,
         use: [
           {
-            loader: "style-loader"
+            loader: "style-loader",
           },
           {
-            loader: "css-loader"
+            loader: "css-loader",
           },
           {
-            loader: "sass-loader"
-          }
-        ]
+            loader: "sass-loader",
+          },
+        ],
       },
       {
         test: /\.(ts|js|tsx)?$/,
         exclude: /node_modules/,
-        loader: "babel-loader"
+        loader: "babel-loader",
       },
       {
         enforce: "pre",
         test: /\.js$/,
-        loader: "source-map-loader"
-      }
-    ]
+        loader: "source-map-loader",
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+      },
+    ],
   },
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   resolve: {
-    extensions: [".jsx", ".tsx", ".ts", ".js"]
+    extensions: [".jsx", ".tsx", ".ts", ".js"],
   },
-  devtool: "source-map"
+  devtool: "source-map",
 };
