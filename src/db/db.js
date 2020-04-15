@@ -16,7 +16,7 @@ module.exports = {
     const output = await db
       .collection("IsolationAtTheStables")
       .find(values)
-      .sort()
+      .sort({ date: -1 })
       .toArray();
     client.close();
     return output;
