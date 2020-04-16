@@ -15,7 +15,8 @@ function App() {
         <Header />
         <Nav />
         <Route path="/who" component={Who} />
-        <Route path="/days" component={Days} />
+        <Route exact path="/days" component={Days} />
+        <Route path="/days/:day" component={Gallery} />
         <Route exact path="/" component={Gallery} />
       </div>
     </Router>

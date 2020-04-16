@@ -3,129 +3,44 @@ import { Link } from "react-router-dom";
 
 import "./Days.scss";
 
+const days = [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25,
+];
+
 const Days = () => {
   return (
     <div className="days-container">
-      <Link to="days/:1" className="day-square">
-        1
-      </Link>
-      <Link to="days/:1" className="day-square">
-        2
-      </Link>
-      <Link to="days/:1" className="day-square">
-        3
-      </Link>
-      <Link to="days/:1" className="day-square">
-        4
-      </Link>
-      <Link to="days/:1" className="day-square">
-        5
-      </Link>
-      <Link to="days/:1" className="day-square">
-        6
-      </Link>
-      <Link to="days/:1" className="day-square">
-        7
-      </Link>
-      <Link to="days/:1" className="day-square">
-        8
-      </Link>
-      <Link to="days/:1" className="day-square">
-        9
-      </Link>
-      <Link to="days/:1" className="day-square">
-        10
-      </Link>
-      <Link to="days/:1" className="day-square">
-        1
-      </Link>
-      <Link to="days/:1" className="day-square">
-        2
-      </Link>
-      <Link to="days/:1" className="day-square">
-        3
-      </Link>
-      <Link to="days/:1" className="day-square">
-        4
-      </Link>
-      <Link to="days/:1" className="day-square">
-        5
-      </Link>
-      <Link to="days/:1" className="day-square">
-        6
-      </Link>
-      <Link to="days/:1" className="day-square">
-        7
-      </Link>
-      <Link to="days/:1" className="day-square">
-        8
-      </Link>
-      <Link to="days/:1" className="day-square">
-        9
-      </Link>
-      <Link to="days/:1" className="day-square">
-        10
-      </Link>
-      <Link to="days/:1" className="day-square">
-        1
-      </Link>
-      <Link to="days/:1" className="day-square">
-        2
-      </Link>
-      <Link to="days/:1" className="day-square">
-        3
-      </Link>
-      <Link to="days/:1" className="day-square">
-        4
-      </Link>
-      <Link to="days/:1" className="day-square">
-        5
-      </Link>
-      <Link to="days/:1" className="day-square">
-        6
-      </Link>
-      <Link to="days/:1" className="day-square">
-        7
-      </Link>
-      <Link to="days/:1" className="day-square">
-        8
-      </Link>
-      <Link to="days/:1" className="day-square">
-        9
-      </Link>
-      <Link to="days/:1" className="day-square">
-        10
-      </Link>
-      <Link to="days/:1" className="day-square">
-        1
-      </Link>
-      <Link to="days/:1" className="day-square">
-        2
-      </Link>
-      <Link to="days/:1" className="day-square">
-        3
-      </Link>
-      <Link to="days/:1" className="day-square">
-        4
-      </Link>
-      <Link to="days/:1" className="day-square">
-        5
-      </Link>
-      <Link to="days/:1" className="day-square">
-        6
-      </Link>
-      <Link to="days/:1" className="day-square">
-        7
-      </Link>
-      <Link to="days/:1" className="day-square">
-        8
-      </Link>
-      <Link to="days/:1" className="day-square">
-        9
-      </Link>
-      <Link to="days/:1" className="day-square">
-        10
-      </Link>
+      {days.map((day) => {
+        return (
+          <Link key={day} to={`days/${day}`} className="day-square">
+            {day}
+          </Link>
+        );
+      })}
     </div>
   );
 };
