@@ -10,4 +10,12 @@ router.get("/", (req, res) => {
       res.status(500).send("DATABASE ERROR: " + err.message);
     });
 });
+
+router.get("/days/:day", (req, res) => {
+  db.getDay(req.params.day)
+    .then((value) => res.json({ value }))
+    .catch((err) => {
+      res.status(500).send("DATABASE ERROR: " + err.message);
+    });
+});
 module.exports = router;
