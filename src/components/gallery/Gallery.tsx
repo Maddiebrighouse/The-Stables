@@ -1,5 +1,9 @@
 import * as React from "react";
 import request from "superagent";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import Lightbox from "react-image-lightbox";
+import "react-image-lightbox/style.css";
+//import InfiniteScroll from "react-infinite-scroll-component";
 import Filter from "../filter/Filter";
 import "./Gallery.scss";
 
@@ -8,6 +12,8 @@ type State = {
   active: boolean;
   photos: PhotoType[];
   showDay: boolean;
+  imageOpen: boolean;
+  photoIndex: number;
 };
 
 type Props = {
@@ -32,6 +38,8 @@ class Gallery extends React.Component<Props, State> {
       photos: [],
       err: "",
       showDay: true,
+      imageOpen: false,
+      photoIndex: 0,
     };
   }
 
@@ -59,7 +67,7 @@ class Gallery extends React.Component<Props, State> {
   }
 
   render() {
-    const { photos } = this.state;
+    const { photos, imageOpen, photoIndex } = this.state;
     return (
       <div className="gallery-body">
         <button className="filter" onClick={this.toggleClass}>
@@ -70,8 +78,19 @@ class Gallery extends React.Component<Props, State> {
           {photos.map((photo) => {
             return (
               <div key={photo._id} className="gallery-item">
-                <img src={`${photo.image}`} alt="placeholder" />
+                <LazyLoadImage
+                  placeholderSrc="https://res.cloudinary.com/isolationstables/image/upload/v1587088566/Isolation/misty/Misty-loading_et5ijk.jpg"
+                  src={`${photo.image}`}
+                  alt="placeholder"
+                  onClick={() => this.setState({ imageOpen: true })}
+                />
                 {photo.video && <video src={`${photo.video}`} />}
+                {imageOpen && (
+                  <Lightbox
+                    mainSrc={`${photo.image}`}
+                    onCloseRequest={() => this.setState({ imageOpen: false })}
+                  />
+                )}
                 <div className="comment">
                   {this.state.showDay && <p className="day">day {photo.day}</p>}
                   <p className="day-comment">{photo.comment}</p>
