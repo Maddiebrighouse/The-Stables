@@ -17,19 +17,15 @@ const Header = () => {
   var end = moment("T07:30:53.000"); // another date
   var duration = moment.duration(now.diff(end));
   var hours = Math.floor(duration.asHours());
-
-  console.log(days);
   return (
     <div className="header-container">
       <a href="/">
         <h1 className="title">Isolation at The Stables</h1>
       </a>
-      {/* <p>{`${days} days`}</p>
-      <p>{`${hours} days`}</p> */}
       <h3>13 days 12 hours 2 minutes 20 seconds</h3>
       <img
         className="misty"
-        src="https://res.cloudinary.com/isolationstables/image/upload/v1586579283/Isolation/misty/Misty_vbrqni.jpg"
+        src="https://res.cloudinary.com/isolationstables/image/upload/v1587075325/Isolation/misty/Misty-glitter_vehvmg.jpg"
         alt="Image of a horse laten"
       />
     </div>
