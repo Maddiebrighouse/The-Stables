@@ -1,4 +1,4 @@
-h1 {
+.who-header {
   font-family: "Astloch", cursive;
   font-weight: 400;
   font-size: 48px;
@@ -44,6 +44,11 @@ p {
   transform: scaleX(1.4);
   transform-origin: 0 0;
   display: inline-block;
+}
+
+.note > p {
+  font-size: 14px;
+  line-height: 20px;
 }
 @font-face {
   font-family: "Open Sans Condensed", sans-serif;
