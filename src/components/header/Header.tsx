@@ -1,35 +1,69 @@
-import React from "react";
-import Moment from "react-moment";
+import * as React from "react";
 import moment from "moment";
 
 import "./Header.scss";
 
-const Header = () => {
-  const startTime = "2020-03-19T08:00:00-12:00";
-  // Days
-  var now = moment(new Date()); //todays date
-  var end = moment("2020-03-19"); // another date
-  var duration = moment.duration(now.diff(end));
-  var days = Math.floor(duration.asDays());
+type Props = {};
 
-  // Hours
-  var now = moment(moment()); //todays date
-  var end = moment("T07:30:53.000"); // another date
-  var duration = moment.duration(now.diff(end));
-  var hours = Math.floor(duration.asHours());
-  return (
-    <div className="header-container">
-      <a href="/">
-        <h1 className="title">Isolation at The Stables</h1>
-      </a>
-      <h3>13 days 12 hours 2 minutes 20 seconds</h3>
-      <img
-        className="misty"
-        src="https://res.cloudinary.com/isolationstables/image/upload/v1587075325/Isolation/misty/Misty-glitter_vehvmg.jpg"
-        alt="Image of a horse laten"
-      />
-    </div>
-  );
+type State = {
+  days: String;
+  hours: String;
+  mins: String;
+  sec: String;
 };
+class Header extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      days: "",
+      hours: "",
+      mins: "",
+      sec: "",
+    };
+  }
+
+  componentDidMount() {
+    setInterval(
+      () =>
+        this.setState({ hours: moment("08:00:00", "HH:mm:ss").fromNow(true) }),
+      1000
+    );
+    setInterval(
+      () => this.setState({ mins: moment().startOf("hour").fromNow(true) }),
+      1000
+    );
+    setInterval(() => this.setState({ sec: moment().format("s") }), 1000);
+  }
+  render() {
+    const startTime = "2020-03-19";
+    let todaysDate = moment(new Date());
+    let diffDays = todaysDate.diff(startTime, "days");
+    // let hours = moment("08:00:00", "HH:mm:ss").fromNow(true);
+    // let min = moment().startOf("hour").fromNow(true);
+    //let sec = moment().format("s");
+    return (
+      <div className="header-container">
+        <img
+          className="hamburger"
+          src="https://res.cloudinary.com/isolationstables/image/upload/v1587102067/Isolation/icons/menu_xamyfv.png"
+        />
+        <a href="/">
+          <h1 className="title">Isolation at The Stables</h1>
+        </a>
+        <div className="time-container">
+          <h3>{`${diffDays} days`}</h3>
+          <h3>{this.state.hours}</h3>
+          <h3>{this.state.mins}</h3>
+          <h3>{` and ${this.state.sec} second`}</h3>
+        </div>
+        <img
+          className="misty"
+          src="https://res.cloudinary.com/isolationstables/image/upload/v1587075325/Isolation/misty/Misty-glitter_vehvmg.jpg"
+          alt="Image of a horse laten"
+        />
+      </div>
+    );
+  }
+}
 
 export default Header;

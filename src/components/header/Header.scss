@@ -7,6 +7,14 @@
   color: black;
 }
 
+.hamburger {
+  border: none;
+  width: 100px;
+  height: 140px;
+  margin-top: 30px;
+  margin-left: 30px;
+  display: none;
+}
 .misty {
   top: 0px;
   right: 0px;
@@ -22,6 +30,15 @@
 .header-container > a {
   text-decoration: none;
 }
+
+.time-container {
+  display: flex;
+}
+
+.time-container > h3 {
+  margin-right: 10px;
+}
+
 h3 {
   font-family: "Open Sans Condensed", sans-serif;
   font-weight: 300;
@@ -34,3 +51,41 @@ h3 {
   font-family: "Astloch", cursive;
   src: url("https://fonts.googleapis.com/css2?family=Astloch&family=Open+Sans+Condensed&display=swap");
 }
+
+// Ipad Pro Responsive
+
+// @media only screen and (min-width: 768px) and (max-width: 1024px) {
+//   .misty {
+//     z-index: -2;
+//     height: 80%;
+//     width: 70%;
+//   }
+// }
+
+// // Phone Responsive
+
+// @media only screen and (min-width: 359px) {
+//   .misty {
+//     height: 80%;
+//     width: 98%;
+//   }
+
+//   .header-container {
+//     margin-left: 10px;
+//   }
+
+//   .time-container {
+//     display: flex;
+//     top: 250px;
+//     position: absolute;
+//   }
+
+//   .time-container > h3 {
+//     font-size: 34px;
+//   }
+
+//   .title {
+//     font-size: 108px;
+//     margin-top: 174px;
+//   }
+// }
