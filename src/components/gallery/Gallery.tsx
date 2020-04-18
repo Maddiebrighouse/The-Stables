@@ -28,6 +28,7 @@ interface PhotoType {
   image: String;
   day: Number;
   comment: String;
+  displayDay: String;
 }
 class Gallery extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -75,6 +76,11 @@ class Gallery extends React.Component<Props, State> {
         </button>
         {this.state.active && <Filter />}
         <div className="gallery-container">
+          <div className="main-day">
+            {!this.state.showDay && (
+              <h3>{`day ${this.props.match.params.day}`}</h3>
+            )}
+          </div>
           {photos.map((photo) => {
             return (
               <div key={photo._id} className="gallery-item">
@@ -92,7 +98,9 @@ class Gallery extends React.Component<Props, State> {
                   />
                 )}
                 <div className="comment">
-                  {this.state.showDay && <p className="day">day {photo.day}</p>}
+                  {this.state.showDay && photo.displayDay && (
+                    <p className="day">day {photo.displayDay}</p>
+                  )}
                   <p className="day-comment">{photo.comment}</p>
                 </div>
               </div>

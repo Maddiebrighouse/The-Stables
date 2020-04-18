@@ -60,6 +60,10 @@
   flex-direction: column;
 }
 
+.comment {
+  display: inline-flex;
+}
+
 .day {
   font-family: "Astloch", cursive;
   font-weight: 400;
@@ -69,10 +73,26 @@
 .day-comment {
   font-family: "Open Sans Condensed", sans-serif;
   font-weight: 300;
-  font-size: 15px;
+  font-size: 20px;
   color: black;
   margin: 0;
   padding: 2px;
+}
+
+.main-day {
+  width: 100%;
+  padding-bottom: 10px;
+}
+.main-day > h3 {
+  font-family: "Astloch", cursive;
+  text-align: center;
+  font-size: 50px;
+  height: 100%;
+  margin: 0;
+  text-align: center;
+  top: 0;
+  position: absolute;
+  right: 44%;
 }
 
 img {

@@ -34,13 +34,11 @@ class Header extends React.Component<Props, State> {
     );
     setInterval(() => this.setState({ sec: moment().format("s") }), 1000);
   }
+
   render() {
     const startTime = "2020-03-19";
     let todaysDate = moment(new Date());
     let diffDays = todaysDate.diff(startTime, "days");
-    // let hours = moment("08:00:00", "HH:mm:ss").fromNow(true);
-    // let min = moment().startOf("hour").fromNow(true);
-    //let sec = moment().format("s");
     return (
       <div className="header-container">
         <img
