@@ -25,6 +25,14 @@ module.exports = {
         ],
       },
       {
+        test: /\.json$/,
+        use: [
+          {
+            loader: "json-loader",
+          },
+        ],
+      },
+      {
         test: /\.(ts|js|tsx)?$/,
         exclude: /node_modules/,
         loader: "babel-loader",
