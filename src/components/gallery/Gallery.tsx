@@ -52,7 +52,7 @@ class Gallery extends React.Component<Props, State> {
       err: "",
       showDay: true,
       imageOpen: false,
-      devMode: true,
+      devMode: false,
       imageIndex: 0,
     };
   }
