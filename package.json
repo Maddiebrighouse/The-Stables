@@ -4,9 +4,9 @@
   "main": "src/server/index.js",
   "scripts": {
     "dev": "nodemon index & webpack --watch",
-    "start": "nodemon --exec babel-node src/server/index.js",
+    "start": "node src/server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src --out-dir dist"
+    "build": "webpack --config ./webpack.config.js"
   },
   "private": true,
   "dependencies": {
