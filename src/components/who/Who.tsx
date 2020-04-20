@@ -15,18 +15,18 @@ const Who = () => {
         In the current circumstance, people living here at The Stables are...
       </p>
       <p>
-        - madeleine
+        - Madeleine
         <br />
-        - zach
+        - Zach
         <br />
-        - ravid
+        - Ravid
         <br />
-        - lowen (now left for wellington)
+        - Loewn (Now left for wellington)
         <br />
-        - michael
+        - Michael
         <br />
-        - buster (madeleine’s boyfriend)
-        <br />- arnie (ravids girlfriend)
+        - Buster (Madeleine’s boyfriend)
+        <br />- Arnie (Ravids girlfriend)
       </p>
       <p>
         This site is an art piece which will document the journey which we will
