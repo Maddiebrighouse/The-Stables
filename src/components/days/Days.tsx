@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./Days.scss";
 
+// TODO write day adding fuction
 const days = [
   1,
   2,
@@ -29,6 +30,11 @@ const days = [
   23,
   24,
   25,
+  26,
+  27,
+  28,
+  29,
+  30,
 ];
 
 const Days = () => {
