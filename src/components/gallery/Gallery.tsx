@@ -52,7 +52,7 @@ class Gallery extends React.Component<Props, State> {
       err: "",
       showDay: true,
       imageOpen: false,
-      devMode: false,
+      devMode: true,
       imageIndex: 0,
     };
   }
@@ -89,10 +89,10 @@ class Gallery extends React.Component<Props, State> {
     const { photos, imageIndex, imageOpen } = this.state;
     return (
       <div className="gallery-body">
-        <button className="filter" onClick={this.toggleClass}>
-          <p className="filter-text">filter</p>
-        </button>
         {/* active when working. */}
+        {/* <button className="filter" onClick={this.toggleClass}>
+          <p className="filter-text">filter</p>
+        </button> */}
         {/* {this.state.active && <Filter />} */}
         <div className="gallery-container">
           <div className="main-day">
