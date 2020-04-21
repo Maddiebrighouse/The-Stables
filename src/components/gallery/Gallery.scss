@@ -107,6 +107,14 @@ img {
 }
 
 .ril__builtinButton {
+  // display: none;
+}
+
+.ril-zoom-in,
+.ril__zoomInButton,
+.ril__zoomOutButton,
+.ril__builtinButtonDisabled,
+.ril-zoom-out {
   display: none;
 }
 
