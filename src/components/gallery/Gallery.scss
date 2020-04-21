@@ -81,8 +81,9 @@
 
 .main-day {
   width: 100%;
-  padding-bottom: 10px;
+  padding-bottom: 30px;
 }
+
 .main-day > h3 {
   font-family: "Astloch", cursive;
   text-align: center;
@@ -99,4 +100,18 @@ img {
   border: 1px solid #000000;
   height: 400px;
   cursor: zoom-in;
+}
+
+.error-message {
+  width: 500px;
+}
+
+.ril__builtinButton {
+  display: none;
+}
+
+.ril-image-current,
+.ril__image {
+  transform: none !important;
+  height: 100%;
 }
