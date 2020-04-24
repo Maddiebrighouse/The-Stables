@@ -96,3 +96,20 @@ h3 {
     font-size: 13px;
   }
 }
+
+@media only screen and (max-width: 770px) {
+  .misty {
+    height: 60%;
+    width: 60%;
+  }
+
+  .main-day {
+    display: none;
+  }
+
+  .gallery-body {
+    margin-top: 0 !important;
+    width: 95%;
+    position: absolute;
+  }
+}

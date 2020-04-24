@@ -102,3 +102,15 @@ p {
     margin-top: 15px;
   }
 }
+
+@media only screen and (max-width: 770px) {
+  .exit {
+    position: absolute;
+    right: 16px;
+    margin-top: 0px;
+  }
+
+  .exit > a {
+    font-size: 30px;
+  }
+}
