@@ -56,3 +56,49 @@ p {
   font-family: "Raleway", sans-serif;
   src: url("https://fonts.googleapis.com/css2?family=Astloch&family=Open+Sans+Condensed&family=Raleway:wght@300&display=swap");
 }
+
+@media only screen and (max-width: 415px) {
+  .who-header {
+    font-size: 29px;
+    line-height: 35px;
+  }
+
+  .exit {
+    position: absolute;
+    right: 11px;
+    margin-top: 0px;
+  }
+
+  .exit > a {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 17px;
+    line-height: 19px;
+  }
+
+  .note > p {
+    font-size: 12px;
+    line-height: 15px;
+  }
+  .who-container {
+    margin-top: 15px;
+  }
+}
+
+//  iphone 5
+@media only screen and (max-width: 330px) {
+  .who-header {
+    font-size: 23px;
+    line-height: 26px;
+  }
+  p {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .who-container {
+    margin-top: 15px;
+  }
+}

@@ -22,6 +22,8 @@
   height: 100%;
   width: 35%;
   border: none;
+  cursor: default;
+  z-index: -3;
 }
 .header-container {
   margin-left: 5%;
@@ -52,40 +54,45 @@ h3 {
   src: url("https://fonts.googleapis.com/css2?family=Astloch&family=Open+Sans+Condensed&display=swap");
 }
 
-// Ipad Pro Responsive
+// Phone Responsive
+@media only screen and (max-width: 415px) {
+  .misty {
+    height: 80%;
+    width: 98%;
+    top: 82px;
+  }
 
-// @media only screen and (min-width: 768px) and (max-width: 1024px) {
-//   .misty {
-//     z-index: -2;
-//     height: 80%;
-//     width: 70%;
-//   }
-// }
+  .header-container {
+    margin-left: 10px;
+  }
 
-// // Phone Responsive
+  .time-container {
+    margin-top: -25px;
+    position: inherit;
+    justify-content: center;
+  }
 
-// @media only screen and (min-width: 359px) {
-//   .misty {
-//     height: 80%;
-//     width: 98%;
-//   }
+  .time-container > h3 {
+    font-size: 16px;
+  }
 
-//   .header-container {
-//     margin-left: 10px;
-//   }
+  .title {
+    font-size: 38px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: center;
+  }
+}
 
-//   .time-container {
-//     display: flex;
-//     top: 250px;
-//     position: absolute;
-//   }
-
-//   .time-container > h3 {
-//     font-size: 34px;
-//   }
-
-//   .title {
-//     font-size: 108px;
-//     margin-top: 174px;
-//   }
-// }
+//  iphone 5
+@media only screen and (max-width: 330px) {
+  .title {
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: center;
+  }
+  .time-container > h3 {
+    font-size: 13px;
+  }
+}

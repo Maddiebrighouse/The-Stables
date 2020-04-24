@@ -38,3 +38,51 @@
   font-family: "Astloch", cursive;
   src: url("https://fonts.googleapis.com/css2?family=Astloch&display=swap");
 }
+
+// iphone
+@media only screen and (max-width: 415px) {
+  .nav {
+    margin-top: 25px;
+    margin-left: 25px;
+  }
+  .link {
+    font-size: 38px;
+    display: inherit;
+    text-align: initial;
+    margin-top: -24px;
+  }
+  .gallery-item > span > img {
+    width: 100%;
+    height: auto;
+  }
+  .main-day {
+    display: none;
+  }
+
+  .gallery-container {
+    padding-top: 0;
+  }
+
+  .gallery-body {
+    margin-top: 0px !important;
+  }
+
+  .link:hover::after {
+    width: 60%;
+  }
+}
+
+// iphone 5
+@media only screen and (max-width: 330px) {
+  .link {
+    font-size: 29px;
+    display: inherit;
+    text-align: initial;
+    margin-top: -24px;
+  }
+
+  .nav {
+    margin-top: 0;
+    margin-left: 25px;
+  }
+}
