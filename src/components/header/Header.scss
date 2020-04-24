@@ -113,3 +113,11 @@ h3 {
     position: absolute;
   }
 }
+
+// Ipad pro size
+@media only screen and (max-width: 1024px) {
+  .misty {
+    height: 60%;
+    width: 60%;
+  }
+}
