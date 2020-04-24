@@ -60,6 +60,12 @@ const message = [
   {
     message: "Madeleine! Why did you not take any photos",
   },
+  {
+    message: "No, No, Please No Paparazzi",
+  },
+  {
+    message: "On this day we just ate, slept and shat",
+  },
 ];
 const mock = [
   {
