@@ -16,6 +16,7 @@ type State = {
   imageOpen: boolean;
   devMode: boolean;
   imageIndex: number;
+  loaded: boolean;
 };
 
 type Props = {
@@ -366,14 +367,16 @@ class Gallery extends React.Component<Props, State> {
       err: "",
       showDay: true,
       imageOpen: false,
-      devMode: false,
+      devMode: true,
       imageIndex: 0,
+      loaded: false,
     };
   }
 
   componentDidMount() {
     const dayNumber = parseInt(this.props.match.params.day);
-    if (dayNumber > 0) {
+    console.log(dayNumber);
+    if (!isNaN(dayNumber)) {
       request.get(`/api/v1/days/${dayNumber}`).then((res) => {
         this.setState({
           photos: res.body.value,
@@ -392,6 +395,7 @@ class Gallery extends React.Component<Props, State> {
         });
       });
     }
+    this.setState({ loaded: true });
   }
 
   toggleClass() {
@@ -400,7 +404,7 @@ class Gallery extends React.Component<Props, State> {
   }
 
   render() {
-    const { photos, imageIndex, imageOpen } = this.state;
+    const { photos, imageIndex, imageOpen, loaded } = this.state;
     return (
       <div className="gallery-body">
         {/* active when working. */}
@@ -417,6 +421,12 @@ class Gallery extends React.Component<Props, State> {
           {photos.length === 0 && (
             <div className="error-message">
               <h3>{message[Math.round(Math.random() * 3)].message}</h3>
+            </div>
+          )}
+
+          {!loaded && (
+            <div className="loading-message">
+              <h3>Loading...</h3>
             </div>
           )}
           {photos.map((photo, i: number) => {
