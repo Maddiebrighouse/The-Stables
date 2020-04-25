@@ -426,11 +426,14 @@ class Gallery extends React.Component<Props, State> {
                   placeholderSrc="https://res.cloudinary.com/isolationstables/image/upload/v1587088566/Isolation/misty/Misty-loading_et5ijk.jpg"
                   src={`${photo.imageLow}`}
                   alt="placeholder"
-                  onClick={() =>
-                    this.setState({ imageOpen: true, imageIndex: i })
-                  }
+                  onClick={() => {
+                    if (window.screen.width <= 770) {
+                      this.setState({ imageOpen: false });
+                    } else {
+                      this.setState({ imageOpen: true, imageIndex: i });
+                    }
+                  }}
                 />
-
                 {/* Todo get videos rendering */}
                 {/* {photo.video && (
                   <Player
