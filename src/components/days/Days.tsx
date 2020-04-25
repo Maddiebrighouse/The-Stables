@@ -1,54 +1,46 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import moment from "moment";
 import "./Days.scss";
+import { Component } from "../../../public/bundle";
 
-// TODO write day adding fuction
-const days = [
-  1,
-  2,
-  3,
-  4,
-  5,
-  6,
-  7,
-  8,
-  9,
-  10,
-  11,
-  12,
-  13,
-  14,
-  15,
-  16,
-  17,
-  18,
-  19,
-  20,
-  21,
-  22,
-  23,
-  24,
-  25,
-  26,
-  27,
-  28,
-  29,
-  30,
-];
-
-const Days = () => {
-  return (
-    <div className="days-container">
-      {days.map((day) => {
-        return (
-          <Link key={day} to={`days/${day}`} className="day-square">
-            {day}
-          </Link>
-        );
-      })}
-    </div>
-  );
+type State = {
+  listDays: Number[];
 };
+type Props = {};
+class Days extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      listDays: [],
+    };
+  }
+
+  componentDidMount() {
+    let list = [];
+    const startTime = "2020-03-19";
+    let todaysDate = moment(new Date());
+    let diffDays = todaysDate.diff(startTime, "days");
+    while (list.length <= diffDays - 1) {
+      let add: any = list.length + 1;
+      list.push(add);
+      console.log(list);
+    }
+    this.setState({ listDays: list });
+  }
+  render() {
+    return (
+      <div className="days-container">
+        {this.state.listDays.map((day: Number) => {
+          return (
+            <Link key={day} to={`days/${day}`} className="day-square">
+              {day}
+            </Link>
+          );
+        })}
+      </div>
+    );
+  }
+}
 
 export default Days;
