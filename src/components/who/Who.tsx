@@ -1,12 +1,12 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import "./Who.scss";
 
 const Who = () => {
   return (
     <div className="who-container">
       <div className="exit">
-        <a href="/">X</a>
+        <Link to={"/"}>X</Link>
       </div>
       <h1 className="who-header">
         The Stables is home to 5 flat mates and a giant horse lantern...
