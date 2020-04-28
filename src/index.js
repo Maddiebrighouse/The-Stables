@@ -1,18 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Provider, Client, defaultExchanges } from "urql";
+import { BrowserRouter } from "react-router-dom";
+import { Provider, createClient, fetchExchange, dedupExchange } from "urql";
 import { cacheExchange } from "@urql/exchange-graphcache";
 
 import "./index.scss";
-import App from "./App";
+import Home from "./App";
 
-const client = new Client({
-  url: "http://localhost:3000",
-  exchanges: [dedupExchange, cache, fetchExchange],
+const client = createClient({
+  url: "http://localhost:3000/graphql",
+  exchanges: [dedupExchange, fetchExchange],
 });
 
-ReactDOM.render(
-  <Provider value={client}>
-    <App />, document.getElementById("app")
-  </Provider>
+export const App = () => (
+  <BrowserRouter>
+    <Provider value={client}>
+      <Home />
+    </Provider>
+  </BrowserRouter>
 );
+
+ReactDOM.render(<App />, document.getElementById("app"));

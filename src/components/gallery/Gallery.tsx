@@ -2,30 +2,38 @@ import * as React from "react";
 import request from "superagent";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Lightbox from "react-image-lightbox";
-import { useQuery, useSubscription } from "urql";
+import { useQuery, Query } from "urql";
 import gql from "graphql-tag";
-//import { Player } from "video-react";
+
 import "../../../node_modules/video-react/dist/video-react.css";
 import "react-image-lightbox/style.css";
-//import Filter from "../filter/Filter";
 import "./Gallery.scss";
+//import { Player } from "video-react";
+//import Filter from "../filter/Filter";
+
+const ResQuery: any = () => {
+  const [result, reexecuteQuery] = useQuery({
+    query: PHOTO_FEED_QUERY,
+  });
+  return result.data;
+};
 
 const PHOTO_FEED_QUERY = gql`
-  {
+  query {
     posts {
       date
-      tags: [String]
-      video: String
-      image: String
-      comment: String
-      displayDay: String
+      tags
+      video
+      image
+      comment
+      displayDay
     }
   }
 `;
 type State = {
   err: string;
   active: boolean;
-  photos: PhotoType[] | Mock[];
+  photos: PhotoType[] | Mock[] | any;
   showDay: boolean;
   imageOpen: boolean;
   devMode: boolean;
@@ -81,6 +89,7 @@ const message = [
     message: "On this day we just ate, slept and shat",
   },
 ];
+
 class Gallery extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
@@ -95,8 +104,6 @@ class Gallery extends React.Component<Props, State> {
       imageIndex: 0,
     };
   }
-
-  //useQuery({ query: PHOTO_FEED_QUERY });
 
   componentDidMount() {
     const dayNumber = parseInt(this.props.match.params.day);
@@ -113,10 +120,8 @@ class Gallery extends React.Component<Props, State> {
         photos: mock,
       });
     } else {
-      request.get(`/api/v1`).then((res) => {
-        this.setState({
-          photos: res.body.value,
-        });
+      this.setState({
+        photos: [],
       });
     }
   }
@@ -136,6 +141,7 @@ class Gallery extends React.Component<Props, State> {
         </button> */}
         {/* {this.state.active && <Filter />} */}
         <div className="gallery-container">
+          <ResQuery />
           <div className="main-day">
             {!this.state.showDay && (
               <h3>{`day ${this.props.match.params.day}`}</h3>

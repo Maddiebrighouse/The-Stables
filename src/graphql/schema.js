@@ -3,6 +3,7 @@ const typeDefs = [
     type Query {
       posts: [Photos]
     }
+
     type Photos {
       _id: String
       date: String
@@ -12,11 +13,11 @@ const typeDefs = [
       day: Int
       comment: String
       displayDay: String
-
       }
-    schema {
-      query: Query
-    }
+
+     schema {
+       query: Query
+     }
   `,
 ];
 

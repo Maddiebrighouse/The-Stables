@@ -50,9 +50,11 @@ module.exports = {
     ],
   },
   devServer: {
+    contentBase: path.join(__dirname, "public"),
     historyApiFallback: true,
   },
   resolve: {
+    mainFields: ["browser", "main", "module"],
     extensions: [".jsx", ".tsx", ".ts", ".js"],
   },
   devtool: "source-map",
