@@ -12,8 +12,5 @@
 - Loading gif
 - Impolment loading gif
 - Make all Js files Ts
-
-## Responsive
-
-- Responsive for Phones Ipads and Ipad pro
-- Grid or feed view for images.
+- Get Codegen working a generating code types
+- Check if css changed worked
