@@ -11,13 +11,6 @@ import "./Gallery.scss";
 //import { Player } from "video-react";
 //import Filter from "../filter/Filter";
 
-const ResQuery: any = () => {
-  const [result, reexecuteQuery] = useQuery({
-    query: PHOTO_FEED_QUERY,
-  });
-  return result.data;
-};
-
 const PHOTO_FEED_QUERY = gql`
   query {
     posts {
@@ -25,6 +18,7 @@ const PHOTO_FEED_QUERY = gql`
       tags
       video
       image
+      imageLow
       comment
       displayDay
     }
@@ -33,7 +27,7 @@ const PHOTO_FEED_QUERY = gql`
 type State = {
   err: string;
   active: boolean;
-  photos: PhotoType[] | Mock[] | any;
+  photos: PhotoType[] | any;
   showDay: boolean;
   imageOpen: boolean;
   devMode: boolean;
@@ -53,17 +47,6 @@ interface PhotoType {
   day: Number;
   comment?: String;
   displayDay?: String;
-}
-
-interface Mock {
-  _id: String;
-  date: String;
-  tags: [String];
-  video: String;
-  image: String;
-  day: Number;
-  comment: String;
-  displayDay: String;
 }
 
 const message = [
@@ -90,90 +73,64 @@ const message = [
   },
 ];
 
-class Gallery extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.toggleClass = this.toggleClass.bind(this);
-    this.state = {
-      active: false,
-      photos: [],
-      err: "",
-      showDay: true,
-      imageOpen: false,
-      devMode: false,
-      imageIndex: 0,
-    };
+const Gallery = () => {
+  const [active, setActive] = React.useState(false);
+  const [showDay, setShowDay] = React.useState(true);
+  const [imageOpen, setImageOpen] = React.useState(false);
+  const [imageIndex, setImageIndex] = React.useState([]);
+  const [photos, setPhotos] = React.useState([]);
+  function toggleClass() {
+    const currentState = active;
+    setActive(!currentState);
   }
+  const [result] = useQuery({
+    query: PHOTO_FEED_QUERY,
+  });
+  // React.useEffect(() => {
+  //   setShowDay(false);
+  //   setPhotos([result]);
+  // });
 
-  componentDidMount() {
-    const dayNumber = parseInt(this.props.match.params.day);
-    if (dayNumber > 0) {
-      request.get(`/api/v1/days/${dayNumber}`).then((res) => {
-        this.setState({
-          photos: res.body.value,
-          showDay: false,
-        });
-      });
-    } else if (this.state.devMode) {
-      // remove once app compleant. just fr dev mode.
-      this.setState({
-        photos: mock,
-      });
-    } else {
-      this.setState({
-        photos: [],
-      });
-    }
-  }
-
-  toggleClass() {
-    const currentState = this.state.active;
-    this.setState({ active: !currentState });
-  }
-
-  render() {
-    const { photos, imageIndex, imageOpen } = this.state;
-    return (
-      <div className="gallery-body">
-        {/* active when working. */}
-        {/* <button className="filter" onClick={this.toggleClass}>
-          <p className="filter-text">filter</p>
-        </button> */}
-        {/* {this.state.active && <Filter />} */}
-        <div className="gallery-container">
-          <ResQuery />
-          <div className="main-day">
-            {!this.state.showDay && (
-              <h3>{`day ${this.props.match.params.day}`}</h3>
-            )}
+  console.log(result);
+  return (
+    <div className="gallery-body">
+      {/* active when working. */}
+      {/* <button className="filter" onClick={this.toggleClass}>
+    <p className="filter-text">filter</p>
+  </button> */}
+      {/* {this.state.active && <Filter />} */}
+      <div className="gallery-container">
+        <div className="main-day">
+          {!showDay && <h3>{`day ${match.params.day}`}</h3>}
+        </div>
+        {/* {result.fetching && result.data === undefined && (
+          <div className="error-message">
+            <h3>{message[Math.round(Math.random() * 3)].message}</h3>
           </div>
-          {photos.length === 0 && (
-            <div className="error-message">
-              <h3>{message[Math.round(Math.random() * 3)].message}</h3>
-            </div>
-          )}
-          {photos.map((photo, i: number) => {
+        )} */}
+        {result.fetching && <div>Loading...</div>}
+
+        {!result.fetching &&
+          result.data.posts.map((photo: any, i: number) => {
             return (
               <div key={i} className="gallery-item">
                 <LazyLoadImage
                   placeholderSrc="https://res.cloudinary.com/isolationstables/image/upload/v1587088566/Isolation/misty/Misty-loading_et5ijk.jpg"
                   src={`${photo.imageLow}`}
                   alt="placeholder"
-                  onClick={() =>
-                    this.setState({ imageOpen: true, imageIndex: i })
-                  }
+                  onClick={() => (setImageOpen(true), setImageIndex(i))}
                 />
 
                 {/* Todo get videos rendering */}
                 {/* {photo.video && (
-                  <Player
-                    playsInline
-                    poster={`${photo.placeholder}`}
-                    src={`${photo.video}`}
-                  />
-                )} */}
+            <Player
+              playsInline
+              poster={`${photo.placeholder}`}
+              src={`${photo.video}`}
+            />
+          )} */}
                 <div className="comment">
-                  {this.state.showDay && photo.displayDay && (
+                  {showDay && photo.displayDay && (
                     <p className="day">day {photo.displayDay}</p>
                   )}
                   <p className="day-comment">{photo.comment}</p>
@@ -181,33 +138,34 @@ class Gallery extends React.Component<Props, State> {
               </div>
             );
           })}
-          {imageOpen && (
-            <Lightbox
-              imageLoadErrorMessage={
-                "I'm either loading or I've failed to load"
-              }
-              mainSrc={`${photos[imageIndex].image}`}
-              onCloseRequest={() => this.setState({ imageOpen: false })}
-              nextSrc={`${photos[(imageIndex + 1) % photos.length]}`}
-              prevSrc={`${
-                photos[(imageIndex + photos.length - 1) % photos.length]
-              }`}
-              onMovePrevRequest={() =>
-                this.setState({
-                  imageIndex: (imageIndex + photos.length - 1) % photos.length,
-                })
-              }
-              onMoveNextRequest={() =>
-                this.setState({
-                  imageIndex: (imageIndex + 1) % photos.length,
-                })
-              }
-            />
-          )}
-        </div>
+        {imageOpen && (
+          <Lightbox
+            imageLoadErrorMessage={"I'm either loading or I've failed to load"}
+            mainSrc={`${result.data.posts[imageIndex].image}`}
+            onCloseRequest={() => setImageOpen(false)}
+            nextSrc={`${
+              result.data.posts[(imageIndex + 1) % result.data.posts.length]
+            }`}
+            prevSrc={`${
+              result.data.posts[
+                (imageIndex + result.data.posts.length - 1) %
+                  result.data.posts.length
+              ]
+            }`}
+            onMovePrevRequest={() =>
+              setImageIndex(
+                (imageIndex + result.data.posts.length - 1) %
+                  result.data.posts.length
+              )
+            }
+            onMoveNextRequest={() =>
+              setImageIndex((imageIndex + 1) % result.data.posts.length)
+            }
+          />
+        )}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Gallery;
