@@ -10,6 +10,7 @@ const typeDefs = [
       tags: [String]
       video: String
       image: String
+      imageLow: String
       day: Int
       comment: String
       displayDay: String
