@@ -90,6 +90,7 @@ const Gallery = (props: String) => {
   React.useEffect(() => {
     if (!fetching && data.days) {
       setPhotos(data.days);
+      setShowDay(false);
     }
   });
 
@@ -97,7 +98,7 @@ const Gallery = (props: String) => {
     const currentState = active;
     setActive(!currentState);
   }
-
+  console.log(data);
   return (
     <div className="gallery-body">
       {/* active when working. */}
@@ -106,10 +107,10 @@ const Gallery = (props: String) => {
   </button> */}
       {/* {this.state.active && <Filter />} */}
       <div className="gallery-container">
-        {/* <div className="main-day">
-          {!showDay && <h3>{`day ${match.params.day}`}</h3>}
-        </div> */}
-        {!fetching && data === undefined && (
+        <div className="main-day">
+          {!showDay && <h3>{`day ${props.match.params.day}`}</h3>}
+        </div>
+        {!fetching && photos.length == 0 && (
           <div className="error-message">
             <h3>{message[Math.round(Math.random() * 3)].message}</h3>
           </div>

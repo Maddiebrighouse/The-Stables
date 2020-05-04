@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import "./Days.scss";
-import { Component } from "../../../public/bundle";
 
 type State = {
   listDays: Number[];
@@ -24,7 +23,6 @@ class Days extends React.Component<Props, State> {
     while (list.length <= diffDays - 1) {
       let add: any = list.length + 1;
       list.push(add);
-      console.log(list);
     }
     this.setState({ listDays: list });
   }
