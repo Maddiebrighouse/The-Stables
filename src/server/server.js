@@ -37,6 +37,27 @@ const start = async () => {
         },
       },
     };
+    const schema = makeExecutableSchema({
+      typeDefs: require("../graphql/schema"),
+      resolvers,
+    });
+
+    server.use(bodyParser.json());
+    server.use(express.static(path.join(__dirname, "../../public")));
+
+    server.use("/graphql", bodyParser.json(), graphqlExpress({ schema }));
+
+    server.use(
+      homePath,
+      graphiqlExpress({
+        endpointURL: "/graphql",
+      })
+    );
+
+    server.listen(PORT, () => {
+      console.log(`Visit for graphql ${URL}:${PORT}${homePath}`);
+      console.log(`Visit ${URL}:${PORT}`);
+    });
   } catch (e) {
     console.log(e);
   }
