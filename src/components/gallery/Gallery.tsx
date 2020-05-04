@@ -98,7 +98,7 @@ const Gallery = (props: String) => {
     const currentState = active;
     setActive(!currentState);
   }
-  console.log(data);
+
   return (
     <div className="gallery-body">
       {/* active when working. */}

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "main": "src/server/index.js",
   "scripts": {
-    "start": "nodemon index & webpack --watch",
+    "start": "nodemon src/server/index.js & webpack --watch",
     "dev": "node src/server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config ./webpack.config.js",
