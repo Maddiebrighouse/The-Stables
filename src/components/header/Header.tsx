@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 import moment from "moment";
 
 import "./Header.scss";
@@ -45,9 +46,9 @@ class Header extends React.Component<Props, State> {
           className="hamburger"
           src="https://res.cloudinary.com/isolationstables/image/upload/v1587102067/Isolation/icons/menu_xamyfv.png"
         />
-        <a href="/">
+        <Link to={"/"}>
           <h1 className="title">Isolation at The Stables</h1>
-        </a>
+        </Link>
         <div className="time-container">
           <h3>{`${diffDays} days`}</h3>
           <h3>{this.state.hours}</h3>

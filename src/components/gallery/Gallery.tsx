@@ -93,9 +93,6 @@ const Gallery = (props: String) => {
     }
   });
 
-  console.log(photos);
-  console.log(fetching, data, error);
-
   function toggleClass() {
     const currentState = active;
     setActive(!currentState);
@@ -130,7 +127,6 @@ const Gallery = (props: String) => {
                   alt="placeholder"
                   onClick={() => (setImageOpen(true), setImageIndex(i))}
                 />
-
                 {/* Todo get videos rendering */}
                 {/* {photo.video && (
             <Player

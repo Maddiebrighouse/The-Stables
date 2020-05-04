@@ -41,3 +41,19 @@
 .day-square:focus {
   outline: none;
 }
+
+@media only screen and (max-width: 415px) {
+  .day-square {
+    font-size: 30px;
+    width: 58px;
+  }
+  .days-container {
+    margin-top: 15px;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .days-container {
+    justify-content: space-around;
+  }
+}
