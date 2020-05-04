@@ -12,7 +12,7 @@ server.use(cors());
 
 const homePath = "/graphiql";
 const URL = "http://localhost";
-//const PORT = 3000;
+const PORT = process.env.PORT;
 const MONGO_URL = `mongodb+srv://${process.env.USERNAMEDB}:${process.env.PASSWORDDB}@isolationatthestables-fn9tr.mongodb.net/test?retryWrites=true&w=majority`;
 
 const start = async () => {
