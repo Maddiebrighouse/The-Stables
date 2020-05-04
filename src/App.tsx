@@ -1,5 +1,5 @@
 import React from "react";
-import { HashRouter as Router, Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import "./App.scss";
 import Header from "./components/header/Header";
@@ -10,16 +10,16 @@ import Gallery from "./components/gallery/Gallery";
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        <Nav />
+    <div className="App">
+      <Header />
+      <Nav />
+      <Switch>
         <Route path="/who" component={Who} />
         <Route exact path="/days" component={Days} />
         <Route path="/days/:day" component={Gallery} />
         <Route exact path="/" component={Gallery} />
-      </div>
-    </Router>
+      </Switch>
+    </div>
   );
 }
 

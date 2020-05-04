@@ -28,7 +28,12 @@ const start = async () => {
     const resolvers = {
       Query: {
         posts: async () => {
-          return await Posts.find({}).toArray();
+          return await Posts.find({}).sort({ date: -1 }).toArray();
+        },
+        days: async (parent, args, context) => {
+          return await Posts.find({ day: args.day })
+            .sort({ date: -1 })
+            .toArray();
         },
       },
     };
