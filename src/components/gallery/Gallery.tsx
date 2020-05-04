@@ -1,9 +1,7 @@
 import * as React from "react";
-import request from "superagent";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Lightbox from "react-image-lightbox";
 import { useQuery, Query } from "urql";
-import gql from "graphql-tag";
 
 import "../../../node_modules/video-react/dist/video-react.css";
 import "react-image-lightbox/style.css";
@@ -11,7 +9,7 @@ import "./Gallery.scss";
 //import { Player } from "video-react";
 //import Filter from "../filter/Filter";
 
-const PHOTO_FEED_QUERY = gql`
+const photoQuery = `
   query {
     posts {
       date
@@ -24,30 +22,18 @@ const PHOTO_FEED_QUERY = gql`
     }
   }
 `;
-type State = {
-  err: string;
-  active: boolean;
-  photos: PhotoType[] | any;
-  showDay: boolean;
-  imageOpen: boolean;
-  devMode: boolean;
-  imageIndex: number;
-};
-
-type Props = {
-  match: any;
-};
-
-interface PhotoType {
-  _id: String;
-  date: String;
-  tags: [String];
-  video: String;
-  image: String;
-  day: Number;
-  comment?: String;
-  displayDay?: String;
-}
+const dayQuery = `
+  query($day: Int) {
+      days(day: $day) {
+        date
+        tags
+        video
+        image
+        imageLow
+        comment
+    }
+  }
+`;
 
 const message = [
   {
@@ -73,25 +59,48 @@ const message = [
   },
 ];
 
-const Gallery = () => {
+const Gallery = (props: String) => {
   const [active, setActive] = React.useState(false);
   const [showDay, setShowDay] = React.useState(true);
   const [imageOpen, setImageOpen] = React.useState(false);
-  const [imageIndex, setImageIndex] = React.useState([]);
+  const [imageIndex, setImageIndex] = React.useState();
   const [photos, setPhotos] = React.useState([]);
+
+  let whichQuery;
+  let whatDay = parseInt(props.match.params.day);
+  if (whatDay >= 0) {
+    whichQuery = {
+      query: dayQuery,
+      variables: { day: whatDay },
+    };
+  } else {
+    whichQuery = {
+      query: photoQuery,
+    };
+  }
+
+  const [{ fetching, data, error }] = useQuery(whichQuery);
+
+  React.useEffect(() => {
+    if (!fetching && data) {
+      setPhotos(data.posts);
+    }
+  });
+
+  React.useEffect(() => {
+    if (!fetching && data.days) {
+      setPhotos(data.days);
+    }
+  });
+
+  console.log(photos);
+  console.log(fetching, data, error);
+
   function toggleClass() {
     const currentState = active;
     setActive(!currentState);
   }
-  const [result] = useQuery({
-    query: PHOTO_FEED_QUERY,
-  });
-  // React.useEffect(() => {
-  //   setShowDay(false);
-  //   setPhotos([result]);
-  // });
 
-  console.log(result);
   return (
     <div className="gallery-body">
       {/* active when working. */}
@@ -100,18 +109,19 @@ const Gallery = () => {
   </button> */}
       {/* {this.state.active && <Filter />} */}
       <div className="gallery-container">
-        <div className="main-day">
+        {/* <div className="main-day">
           {!showDay && <h3>{`day ${match.params.day}`}</h3>}
-        </div>
-        {/* {result.fetching && result.data === undefined && (
+        </div> */}
+        {!fetching && data === undefined && (
           <div className="error-message">
             <h3>{message[Math.round(Math.random() * 3)].message}</h3>
           </div>
-        )} */}
-        {result.fetching && <div>Loading...</div>}
+        )}
 
-        {!result.fetching &&
-          result.data.posts.map((photo: any, i: number) => {
+        {fetching && <div>Loading...</div>}
+
+        {!fetching &&
+          photos.map((photo: any, i: number) => {
             return (
               <div key={i} className="gallery-item">
                 <LazyLoadImage
@@ -141,25 +151,17 @@ const Gallery = () => {
         {imageOpen && (
           <Lightbox
             imageLoadErrorMessage={"I'm either loading or I've failed to load"}
-            mainSrc={`${result.data.posts[imageIndex].image}`}
+            mainSrc={`${photos[imageIndex].image}`}
             onCloseRequest={() => setImageOpen(false)}
-            nextSrc={`${
-              result.data.posts[(imageIndex + 1) % result.data.posts.length]
-            }`}
+            nextSrc={`${photos[(imageIndex + 1) % photos.length]}`}
             prevSrc={`${
-              result.data.posts[
-                (imageIndex + result.data.posts.length - 1) %
-                  result.data.posts.length
-              ]
+              photos[(imageIndex + photos.length - 1) % photos.length]
             }`}
             onMovePrevRequest={() =>
-              setImageIndex(
-                (imageIndex + result.data.posts.length - 1) %
-                  result.data.posts.length
-              )
+              setImageIndex((imageIndex + photos.length - 1) % photos.length)
             }
             onMoveNextRequest={() =>
-              setImageIndex((imageIndex + 1) % result.data.posts.length)
+              setImageIndex((imageIndex + 1) % photos.length)
             }
           />
         )}

@@ -14,3 +14,4 @@
 - Make all Js files Ts
 - Get Codegen working a generating code types
 - Check if css changed worked
+- Browser reload issue
