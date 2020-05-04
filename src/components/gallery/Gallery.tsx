@@ -82,7 +82,7 @@ const Gallery = (props: String) => {
   const [{ fetching, data, error }] = useQuery(whichQuery);
 
   React.useEffect(() => {
-    if (!fetching && data) {
+    if (!fetching && data.posts) {
       setPhotos(data.posts);
     }
   });

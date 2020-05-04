@@ -7,8 +7,9 @@ import { cacheExchange } from "@urql/exchange-graphcache";
 import "./index.scss";
 import Home from "./App";
 
+const url = `${location.href}graphql`;
 const client = createClient({
-  url: "http://localhost:3000/graphql",
+  url: url,
   exchanges: [dedupExchange, fetchExchange],
 });
 
