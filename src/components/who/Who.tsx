@@ -21,7 +21,7 @@ const Who = () => {
         <br />
         - Ravid
         <br />
-        - Loewn (Now left for wellington)
+        - Loewn
         <br />
         - Michael
         <br />
@@ -38,9 +38,11 @@ const Who = () => {
           Note: <br /> 17 April
           <br /> We have already noticed a major fact about documenting this
           journey through COVID-19, that it is easy to document the good times.
-          But its much harder to photograph the diffucult times. the moments
+          But its much harder to photograph the difficult times. The moments
           when we are all down or doing nothing but hiding in our rooms all day
-          is much hard to capture.
+          is much hard to capture. So take these images with a gain of salt,
+          that these are the good times. And that we are all struggling in our
+          own ways. Stay safe everyone and love each other and your self.
         </p>
       </div>
     </div>
