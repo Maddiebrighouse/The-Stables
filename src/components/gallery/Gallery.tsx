@@ -122,12 +122,14 @@ const Gallery = (props: String) => {
           photos.map((photo: any, i: number) => {
             return (
               <div key={i} className="gallery-item">
-                <LazyLoadImage
-                  placeholderSrc="https://res.cloudinary.com/isolationstables/image/upload/v1587088566/Isolation/misty/Misty-loading_et5ijk.jpg"
-                  src={`${photo.imageLow}`}
-                  alt="placeholder"
-                  onClick={() => (setImageOpen(true), setImageIndex(i))}
-                />
+                {photo.imageLow && (
+                  <LazyLoadImage
+                    placeholderSrc="https://res.cloudinary.com/isolationstables/image/upload/v1587088566/Isolation/misty/Misty-loading_et5ijk.jpg"
+                    src={`${photo.imageLow}`}
+                    alt="placeholder"
+                    onClick={() => (setImageOpen(true), setImageIndex(i))}
+                  />
+                )}
                 {/* Todo get videos rendering */}
                 {/* {photo.video && (
             <Player
