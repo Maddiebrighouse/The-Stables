@@ -3,22 +3,56 @@ import React from "react";
 import "./Filter.scss";
 
 type Props = {};
-type State = {};
+type State = {
+  active: boolean;
+};
 class Filter extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.state = {};
+    this.handleChange = this.handleChange.bind(this);
+    this.toggleClass = this.toggleClass.bind(this);
+    this.state = {
+      active: true,
+    };
   }
+
+  toggleClass() {
+    const currentState = this.state.active;
+    this.setState({ active: !currentState });
+  }
+
+  handleChange() {
+    this.props.onActiveChange(true);
+    this.toggleClass();
+  }
+
   render() {
+    const active = this.state.active;
     return (
       <div className="filter-container">
         <div className="order-container">
           <h1>order...</h1>
-          <button className="strike">newest to oldest</button>
+          <button
+            className={active ? "strike strikeactive" : "strike"}
+            onClick={() => {
+              //this.toggleClass();
+              this.handleChange();
+            }}
+          >
+            newest to oldest
+          </button>
           <br />
-          <button className="strike">oldest to newest</button>
+          <button
+            className={this.state.active ? "strike" : "strike strikeactive"}
+            onClick={() => {
+              //this.toggleClass();
+              this.handleChange();
+            }}
+          >
+            oldest to newest
+          </button>
         </div>
-        <div className="photo-container">
+        {/* <div className="photo-container">
           <h1>photos of...</h1>
           <button className="strike">madeleine</button>
           <br />
@@ -31,7 +65,7 @@ class Filter extends React.Component<Props, State> {
           <button className="strike">buster</button>
           <br />
           <button className="strike">arnie</button>
-        </div>
+        </div> */}
       </div>
     );
   }

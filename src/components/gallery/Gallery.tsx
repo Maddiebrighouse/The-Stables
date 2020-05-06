@@ -7,7 +7,7 @@ import "../../../node_modules/video-react/dist/video-react.css";
 import "react-image-lightbox/style.css";
 import "./Gallery.scss";
 //import { Player } from "video-react";
-//import Filter from "../filter/Filter";
+import Filter from "../filter/Filter";
 
 const photoQuery = `
   query {
@@ -65,6 +65,7 @@ const Gallery = (props: String) => {
   const [imageOpen, setImageOpen] = React.useState(false);
   const [imageIndex, setImageIndex] = React.useState();
   const [photos, setPhotos] = React.useState([]);
+  const [filterNew, setFilterNew] = React.useState(false);
 
   let whichQuery;
   let whatDay = parseInt(props.match.params.day);
@@ -99,13 +100,28 @@ const Gallery = (props: String) => {
     setActive(!currentState);
   }
 
+  if (filterNew) {
+    setPhotos(photos.reverse());
+    setFilterNew(false);
+  }
+
+  function handleFilterChange(filter: boolean) {
+    setFilterNew(filter);
+  }
+
   return (
     <div className="gallery-body">
       {/* active when working. */}
-      {/* <button className="filter" onClick={this.toggleClass}>
-    <p className="filter-text">filter</p>
-  </button> */}
-      {/* {this.state.active && <Filter />} */}
+      {window.innerWidth > 760 && (
+        <button className="filter" onClick={toggleClass}>
+          <p className="filter-text">filter</p>
+        </button>
+      )}
+
+      {window.innerWidth > 760 && active && (
+        <Filter onActiveChange={handleFilterChange} />
+      )}
+
       <div className="gallery-container">
         <div className="main-day">
           {!showDay && <h3>{`day ${props.match.params.day}`}</h3>}
