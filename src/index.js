@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { Provider, createClient, fetchExchange, dedupExchange } from "urql";
 import { cacheExchange } from "@urql/exchange-graphcache";
 
@@ -14,11 +14,11 @@ const client = createClient({
 });
 
 export const App = () => (
-  <BrowserRouter>
+  <HashRouter>
     <Provider value={client}>
       <Home />
     </Provider>
-  </BrowserRouter>
+  </HashRouter>
 );
 
 ReactDOM.render(<App />, document.getElementById("app"));
