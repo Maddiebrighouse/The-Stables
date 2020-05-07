@@ -6,7 +6,7 @@ import { useQuery, Query } from "urql";
 import "../../../node_modules/video-react/dist/video-react.css";
 import "react-image-lightbox/style.css";
 import "./Gallery.scss";
-//import { Player } from "video-react";
+import { Player } from "video-react";
 import Filter from "../filter/Filter";
 
 const photoQuery = `
@@ -147,13 +147,16 @@ const Gallery = (props: String) => {
                   />
                 )}
                 {/* Todo get videos rendering */}
-                {/* {photo.video && (
-            <Player
-              playsInline
-              poster={`${photo.placeholder}`}
-              src={`${photo.video}`}
-            />
-          )} */}
+                {photo.video && (
+                  <Player
+                    playsInline
+                    aspectRatio={"auto"}
+                    height={400}
+                    fluid={false}
+                    poster={`${photo.placeholder}`}
+                    src={`${photo.video}`}
+                  />
+                )}
                 <div className="comment">
                   {showDay && photo.displayDay && (
                     <p className="day">day {photo.displayDay}</p>
