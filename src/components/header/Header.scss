@@ -37,8 +37,13 @@
   display: flex;
 }
 
-.time-container > h3 {
+.lockdown-container > h3 {
   margin-right: 10px;
+  margin-bottom: 0px;
+}
+.social-container > h3 {
+  margin-right: 10px;
+  margin-top: 10px;
 }
 
 h3 {
