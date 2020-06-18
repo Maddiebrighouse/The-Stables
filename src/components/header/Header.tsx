@@ -60,10 +60,6 @@ class Header extends React.Component<Props, State> {
     let diffDays = lockDownEnd.diff(startTime, "days");
     return (
       <div className="header-container">
-        <img
-          className="hamburger"
-          src="https://res.cloudinary.com/isolationstables/image/upload/v1587102067/Isolation/icons/menu_xamyfv.png"
-        />
         <Link to={"/"}>
           <h1 className="title">Isolation at The Stables</h1>
         </Link>
