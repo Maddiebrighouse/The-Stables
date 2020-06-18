@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 import { Tooltip } from "@material-ui/core";
-import { withStyles, Theme, makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import "./Header.scss";
 
 const CustomTooltip = withStyles(() => ({
