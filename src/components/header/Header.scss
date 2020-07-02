@@ -55,8 +55,11 @@ h3 {
 
 @font-face {
   font-family: "Open Sans Condensed", sans-serif;
-  font-family: "Astloch", cursive;
-  src: url("https://fonts.googleapis.com/css2?family=Astloch&family=Open+Sans+Condensed&display=swap");
+  src: url("https://fonts.googleapis.com/css2?family=Open+Sans+Condensed&display=swap");
+}
+@font-face {
+  font-family: Astloch;
+  src: url(../../../public/Astloch-Regular.ttf);
 }
 
 // Phone Responsive
