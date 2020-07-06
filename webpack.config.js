@@ -43,6 +43,18 @@ module.exports = {
         exclude: /node_modules/,
         loader: "babel-loader",
       },
+      {
+        test: /\.(ttf|eot|woff|woff2)$/,
+        loader: "file-loader",
+        options: {
+          name: "fonts/[name].[ext]",
+        },
+      },
+      {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        loader: "graphql-tag/loader",
+      },
     ],
   },
   devServer: {
