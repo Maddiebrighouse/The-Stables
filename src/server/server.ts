@@ -32,13 +32,12 @@ const start = async () => {
             .sort({ date: +1 })
             .toArray();
         },
-        days: async (args: any) => {
+        days: async (parent: any, args: any, context: any) => {
           return await Posts.find({ day: args.day })
             .sort({ date: +1 })
             .toArray();
         },
-        people: async (args: any) => {
-          console.log(args + "server");
+        people: async (parent: any, args: any, context: any) => {
           return await Posts.find({ tags: args.tags })
             .sort({ date: +1 })
             .toArray();
