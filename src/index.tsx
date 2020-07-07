@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { HashRouter } from "react-router-dom";
 import { Provider, createClient, fetchExchange, dedupExchange } from "urql";
-import { cacheExchange } from "@urql/exchange-graphcache";
 
 import "./index.scss";
 import Home from "./App";
