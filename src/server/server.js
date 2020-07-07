@@ -38,6 +38,7 @@ const start = async () => {
             .toArray();
         },
         people: async (parent, args, context) => {
+          console.log(args + "server");
           return await Posts.find({ tags: args.tags })
             .sort({ date: +1 })
             .toArray();

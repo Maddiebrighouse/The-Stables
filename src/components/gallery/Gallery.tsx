@@ -2,6 +2,7 @@ import * as React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Lightbox from "react-image-lightbox";
 import { useQuery } from "urql";
+// typesripct error fix
 import { Player } from "video-react";
 import "../../../node_modules/video-react/dist/video-react.css";
 import "react-image-lightbox/style.css";
@@ -15,13 +16,14 @@ const Gallery = (props: String) => {
   const [active, setActive] = React.useState(false);
   const [showDay, setShowDay] = React.useState(true);
   const [imageOpen, setImageOpen] = React.useState(false);
-  const [imageIndex, setImageIndex] = React.useState();
+  const [imageIndex, setImageIndex] = React.useState(0);
   const [photos, setPhotos] = React.useState([]);
   const [filterNew, setFilterNew] = React.useState(false);
-  const [filterPeople, setFilterPeople] = React.useState();
-  const [filterPeopleActive, setFilterPeopleActive] = React.useState(true);
+  const [filterPeople, setFilterPeople] = React.useState("");
+  const [filterPeopleActive, setFilterPeopleActive] = React.useState(false);
 
   let whichQuery;
+  // Typescritp error fix
   let whatDay = parseInt(props.match.params.day);
   if (whatDay >= 0) {
     whichQuery = {
@@ -39,28 +41,35 @@ const Gallery = (props: String) => {
       query: peopleQuery,
       variables: { tags: filterPeople },
     };
-    setFilterPeopleActive(false);
+    // this brakes everything
+    //setFilterPeopleActive(false);
   }
-
+  console.log(whichQuery);
   const [{ fetching, data, error }] = useQuery(whichQuery);
   console.log(error);
 
   React.useEffect(() => {
-    if (!fetching && data.posts) {
-      setPhotos(data.posts);
+    if (data) {
+      if (!fetching && data.posts) {
+        setPhotos(data.posts);
+      }
     }
   });
 
   React.useEffect(() => {
-    if (!fetching && data.days) {
-      setPhotos(data.days);
-      setShowDay(false);
+    if (data) {
+      if (!fetching && data.days) {
+        setPhotos(data.days);
+        setShowDay(false);
+      }
     }
   });
 
   React.useEffect(() => {
-    if (!fetching && data.people) {
-      setPhotos(data.people);
+    if (data) {
+      if (!fetching && data.people) {
+        setPhotos(data.people);
+      }
     }
   });
 
@@ -77,7 +86,8 @@ const Gallery = (props: String) => {
   function handleFilterChange(filter: any) {
     if (typeof filter === "boolean") {
       setFilterNew(filter);
-    } else if (typeof filter === "string") {
+    }
+    if (typeof filter === "string") {
       setFilterPeople(filter);
       setFilterPeopleActive(true);
     }
@@ -120,7 +130,6 @@ const Gallery = (props: String) => {
                     onClick={() => (setImageOpen(true), setImageIndex(i))}
                   />
                 )}
-                {/* Todo get videos rendering */}
                 {photo.video && (
                   <Player
                     playsInline
