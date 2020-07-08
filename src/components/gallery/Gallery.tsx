@@ -41,8 +41,6 @@ const Gallery = (props: String) => {
       query: peopleQuery,
       variables: { tags: filterPeople },
     };
-    // this brakes everything
-    //setFilterPeopleActive(false);
   }
   console.log(whichQuery);
   const [{ fetching, data, error }] = useQuery(whichQuery);
