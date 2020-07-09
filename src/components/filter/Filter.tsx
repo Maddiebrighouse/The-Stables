@@ -38,7 +38,7 @@ const Filter = (props: Props, state: State) => {
   }
 
   React.useEffect(() => {
-    if (personFilter) {
+    if (personFilter || history.length > 2) {
       switch (history[history.length - 2]) {
         case 1:
           setMadeleine(false);
@@ -95,7 +95,7 @@ const Filter = (props: Props, state: State) => {
             handleChange("Madeleine");
             setMadeleine(true);
             setPersonFilter(true);
-            setHistory(1);
+            history.push(1);
           }}
         >
           madeleine
@@ -107,7 +107,7 @@ const Filter = (props: Props, state: State) => {
             handleChange("Zach");
             setZach(true);
             setPersonFilter(true);
-            setHistory(2);
+            history.push(2);
           }}
         >
           zach
@@ -119,7 +119,7 @@ const Filter = (props: Props, state: State) => {
             handleChange("Lowen");
             setLoewn(true);
             setPersonFilter(true);
-            setHistory(3);
+            history.push(3);
           }}
         >
           loewn
@@ -131,7 +131,7 @@ const Filter = (props: Props, state: State) => {
             handleChange("Michael");
             setMichael(true);
             setPersonFilter(true);
-            setHistory(4);
+            history.push(4);
           }}
         >
           michael
@@ -143,7 +143,7 @@ const Filter = (props: Props, state: State) => {
             handleChange("Buster");
             setBuster(true);
             setPersonFilter(true);
-            setHistory(5);
+            history.push(5);
           }}
         >
           buster
@@ -155,7 +155,7 @@ const Filter = (props: Props, state: State) => {
             handleChange("Arnie");
             setActive(true);
             setPersonFilter(true);
-            setHistory(6);
+            history.push(6);
           }}
         >
           arnie
@@ -167,7 +167,7 @@ const Filter = (props: Props, state: State) => {
             handleChange("Ravid");
             setRavid(true);
             setPersonFilter(true);
-            setHistory(7);
+            history.push(7);
           }}
         >
           ravid
