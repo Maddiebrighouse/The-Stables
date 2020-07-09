@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "main": "src/server/server.ts",
   "scripts": {
-    "start": "node src/server/server.ts",
-    "dev": "nodemon src/server/server.ts & webpack --watch",
+    "start": "node src/server/server.js",
+    "dev": "nodemon src/server/server.js & webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config ./webpack.config.js",
     "generate": "graphql-codegen --config codegen.yml"
