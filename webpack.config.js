@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.js",
+  entry: "./src/index.tsx",
   output: {
     path: path.join(__dirname, "public"),
     filename: "bundle.js",
@@ -26,11 +26,7 @@ module.exports = {
       },
       {
         test: /\.json$/,
-        use: [
-          {
-            loader: "json-loader",
-          },
-        ],
+        loader: "json-loader",
       },
       {
         test: /\.(ts|js|tsx)?$/,
@@ -46,6 +42,18 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: "babel-loader",
+      },
+      {
+        test: /\.(ttf|eot|woff|woff2)$/,
+        loader: "file-loader",
+        options: {
+          name: "fonts/[name].[ext]",
+        },
+      },
+      {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        loader: "graphql-tag/loader",
       },
     ],
   },

@@ -3,9 +3,7 @@ const typeDefs = [
     type Query {
       posts: [Photos]
       days(day: Int):[Photos]
-    }
-    type Day {
-      days:[Photos]
+      people(tags: [String]):[Photos]
     }
 
     type Photos {

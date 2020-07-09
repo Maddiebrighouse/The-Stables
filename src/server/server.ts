@@ -7,15 +7,15 @@ const { graphqlExpress, graphiqlExpress } = require("graphql-server-express");
 const { makeExecutableSchema } = require("graphql-tools");
 const cors = require("cors");
 
-const server = express();
-server.use(cors());
-
-const homePath = "/graphiql";
-const URL = "http://localhost";
-const PORT = process.env.PORT || 3000;
-const MONGO_URL = `mongodb+srv://${process.env.USERNAMEDB}:${process.env.PASSWORDDB}@isolationatthestables-fn9tr.mongodb.net/test?retryWrites=true&w=majority`;
-
 const start = async () => {
+  const server = express();
+  server.use(cors());
+
+  const homePath = "/graphiql";
+  const URL = "http://localhost";
+  const PORT = process.env.PORT || 3000;
+  const MONGO_URL = `mongodb+srv://${process.env.USERNAMEDB}:${process.env.PASSWORDDB}@isolationatthestables-fn9tr.mongodb.net/test?retryWrites=true&w=majority`;
+
   try {
     const clientPromise = MongoClient.connect(MONGO_URL, {
       useNewUrlParser: true,
@@ -28,11 +28,18 @@ const start = async () => {
     const resolvers = {
       Query: {
         posts: async () => {
-          return await Posts.find({}).sort({ date: -1 }).toArray();
+          return await Posts.find({})
+            .sort({ date: +1 })
+            .toArray();
         },
-        days: async (parent, args, context) => {
+        days: async (parent: any, args: any, context: any) => {
           return await Posts.find({ day: args.day })
-            .sort({ date: -1 })
+            .sort({ date: +1 })
+            .toArray();
+        },
+        people: async (parent: any, args: any, context: any) => {
+          return await Posts.find({ tags: args.tags })
+            .sort({ date: +1 })
             .toArray();
         },
       },
@@ -63,4 +70,4 @@ const start = async () => {
   }
 };
 
-module.exports = start;
+start();

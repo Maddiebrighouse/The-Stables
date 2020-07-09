@@ -1,73 +1,29 @@
 import * as React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Lightbox from "react-image-lightbox";
-import { useQuery, Query } from "urql";
-
+import { useQuery } from "urql";
+// typesripct error fix
+import { Player } from "video-react";
 import "../../../node_modules/video-react/dist/video-react.css";
 import "react-image-lightbox/style.css";
+
 import "./Gallery.scss";
-import { Player } from "video-react";
 import Filter from "../filter/Filter";
-
-const photoQuery = `
-  query {
-    posts {
-      date
-      tags
-      video
-      image
-      imageLow
-      comment
-      displayDay
-    }
-  }
-`;
-const dayQuery = `
-  query($day: Int) {
-      days(day: $day) {
-        date
-        tags
-        video
-        image
-        imageLow
-        comment
-    }
-  }
-`;
-
-const message = [
-  {
-    message:
-      "We must be very dull people to have done nothing at all on this day.",
-  },
-  {
-    message:
-      "Sorry, Madeleine, Buster, Ravid, Arnie, Michael and Loewn can't come to the phone right now. They are busy doing bigger and better things.",
-  },
-  {
-    message:
-      "Clearly we were either play Animal Crossing or Mario kart and were to busy to take photos on this day, soz.",
-  },
-  {
-    message: "Madeleine! Why did you not take any photos",
-  },
-  {
-    message: "No, No, Please No Paparazzi",
-  },
-  {
-    message: "On this day we just ate, slept and shat",
-  },
-];
+import { photoQuery, dayQuery, peopleQuery } from "./query";
+import messages from "./message";
 
 const Gallery = (props: String) => {
   const [active, setActive] = React.useState(false);
   const [showDay, setShowDay] = React.useState(true);
   const [imageOpen, setImageOpen] = React.useState(false);
-  const [imageIndex, setImageIndex] = React.useState();
+  const [imageIndex, setImageIndex] = React.useState(0);
   const [photos, setPhotos] = React.useState([]);
   const [filterNew, setFilterNew] = React.useState(false);
+  const [filterPeople, setFilterPeople] = React.useState("");
+  const [filterPeopleActive, setFilterPeopleActive] = React.useState(false);
 
   let whichQuery;
+  // Typescritp error fix
   let whatDay = parseInt(props.match.params.day);
   if (whatDay >= 0) {
     whichQuery = {
@@ -80,18 +36,38 @@ const Gallery = (props: String) => {
     };
   }
 
+  if (filterPeopleActive) {
+    whichQuery = {
+      query: peopleQuery,
+      variables: { tags: filterPeople },
+    };
+  }
+  console.log(whichQuery);
   const [{ fetching, data, error }] = useQuery(whichQuery);
+  console.log(error);
 
   React.useEffect(() => {
-    if (!fetching && data.posts) {
-      setPhotos(data.posts);
+    if (data) {
+      if (!fetching && data.posts) {
+        setPhotos(data.posts);
+      }
     }
   });
 
   React.useEffect(() => {
-    if (!fetching && data.days) {
-      setPhotos(data.days);
-      setShowDay(false);
+    if (data) {
+      if (!fetching && data.days) {
+        setPhotos(data.days);
+        setShowDay(false);
+      }
+    }
+  });
+
+  React.useEffect(() => {
+    if (data) {
+      if (!fetching && data.people) {
+        setPhotos(data.people);
+      }
     }
   });
 
@@ -105,8 +81,14 @@ const Gallery = (props: String) => {
     setFilterNew(false);
   }
 
-  function handleFilterChange(filter: boolean) {
-    setFilterNew(filter);
+  function handleFilterChange(filter: any) {
+    if (typeof filter === "boolean") {
+      setFilterNew(filter);
+    }
+    if (typeof filter === "string") {
+      setFilterPeople(filter);
+      setFilterPeopleActive(true);
+    }
   }
 
   return (
@@ -128,7 +110,7 @@ const Gallery = (props: String) => {
         </div>
         {!fetching && photos.length == 0 && (
           <div className="error-message">
-            <h3>{message[Math.round(Math.random() * 3)].message}</h3>
+            <h3>{messages[Math.round(Math.random() * 3)].message}</h3>
           </div>
         )}
 
@@ -146,7 +128,6 @@ const Gallery = (props: String) => {
                     onClick={() => (setImageOpen(true), setImageIndex(i))}
                   />
                 )}
-                {/* Todo get videos rendering */}
                 {photo.video && (
                   <Player
                     playsInline
