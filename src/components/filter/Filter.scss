@@ -20,9 +20,9 @@ h1 {
 }
 
 .strike {
-  font-family: "Open Sans Condensed", sans-serif;
+  font-family: "Tenali Ramakrishna", sans-serif;
   font-weight: 300;
-  font-size: 20px;
+  font-size: 25px;
   margin: 0;
   cursor: pointer;
   display: inline-block;
@@ -30,6 +30,7 @@ h1 {
   vertical-align: middle;
   background-color: white;
   border: none;
+  height: 35px;
 }
 
 .strike::after {
@@ -38,7 +39,7 @@ h1 {
   height: 1px;
   background-color: black;
   position: relative;
-  bottom: 11px;
+  bottom: 23px;
   width: 0;
 }
 

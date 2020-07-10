@@ -2,7 +2,7 @@
 
 - Apply filtering for mobile.
   - words by numbers.
-- Loading SVG.
-- Load icon for image loading.
-- Fix days bug and get actual end of isolation.
+- Load icon for image loading. (spilled Wine Glass drawing?).
 - Rendering issue.
+- Css wrap text.
+- Update Readme file.

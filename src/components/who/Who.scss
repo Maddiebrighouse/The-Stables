@@ -6,9 +6,9 @@
 }
 
 p {
-  font-family: "Open Sans Condensed", sans-serif;
+  font-family: "Tenali Ramakrishna", sans-serif;
   font-weight: 300;
-  font-size: 24px;
+  font-size: 30px;
   line-height: 33px;
 }
 
@@ -30,15 +30,15 @@ p {
 
 .exit {
   position: absolute;
-  right: 45px;
-  margin-top: 19px;
+  right: 30px;
+  margin-top: -25px;
 }
 
 .exit > a {
-  font-size: 48px;
+  font-size: 80px;
   text-decoration: none;
   color: black;
-  font-family: "Raleway", sans-serif;
+  font-family: "Tenali Ramakrishna", sans-serif;
   transform-origin: 0 0;
   font-weight: 100;
   transform: scaleX(1.4);
@@ -47,14 +47,17 @@ p {
 }
 
 .note > p {
-  font-size: 14px;
+  font-size: 20px;
   line-height: 20px;
 }
 @font-face {
-  font-family: "Open Sans Condensed", sans-serif;
-  font-family: "Astloch", cursive;
   font-family: "Raleway", sans-serif;
-  src: url("https://fonts.googleapis.com/css2?family=Astloch&family=Open+Sans+Condensed&family=Raleway:wght@300&display=swap");
+  src: url("https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&family=Raleway:wght@300&display=swap");
+}
+
+@font-face {
+  font-family: Astloch;
+  src: url(../../../public/Astloch-Regular.ttf);
 }
 
 @media only screen and (max-width: 415px) {
