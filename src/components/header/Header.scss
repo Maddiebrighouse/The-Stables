@@ -37,19 +37,31 @@
   display: flex;
 }
 
+.time-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  padding-top: 10px;
+  cursor: help;
+}
+
 .lockdown-container > h3 {
   margin-right: 10px;
   margin-bottom: 0px;
-  margin-top: 10px;
+  margin-top: 0px;
 }
+
 .social-container > h3 {
   margin-right: 10px;
-  margin-top: 10px;
+  margin-top: 0px;
 }
 
 .lockdown-2-container > h3 {
   margin-right: 10px;
   margin-bottom: 0px;
+  margin-top: 0px;
 }
 h3 {
   font-family: "Open Sans Condensed", sans-serif;
