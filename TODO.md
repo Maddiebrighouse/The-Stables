@@ -6,4 +6,6 @@
 - Rendering issue.
 - Css wrap text.
 - Css responsive fonts.
+- misty width on phone
+- days phone
 - Update Readme file.

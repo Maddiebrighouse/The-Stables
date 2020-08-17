@@ -127,3 +127,9 @@ img {
   line-height: 59px;
   color: black;
 }
+
+@media only screen and (max-width: 770px) {
+  .error-message > h3 {
+    font-size: 25px;
+  }
+}
