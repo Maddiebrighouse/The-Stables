@@ -15,7 +15,7 @@ const Days = (props: Props, state: State) => {
     const startTime = "2020-08-12";
     let todaysDate = moment(new Date());
     let diffDays = todaysDate.diff(startTime, "days");
-    let noPhotoDays = 93;
+    let noPhotoDays = 145;
 
     while (list.length <= 53 - 1) {
       let add: any = list.length + 1;
