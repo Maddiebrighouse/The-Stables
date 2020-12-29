@@ -13,8 +13,8 @@ const Days = (props: Props, state: State) => {
   useEffect(() => {
     let list: number[] = [];
     const startTime = "2020-08-12";
-    let todaysDate = moment(new Date());
-    let diffDays = todaysDate.diff(startTime, "days");
+    let endDate = moment("2020-09-03");
+    let diffDays = endDate.diff(startTime, "days");
     let noPhotoDays = 145;
 
     while (list.length <= 53 - 1) {

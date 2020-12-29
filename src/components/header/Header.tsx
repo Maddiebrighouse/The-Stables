@@ -17,22 +17,8 @@ const CustomTooltip = withStyles(() => ({
 }))(Tooltip);
 
 const Header = () => {
-  const [hours, setHour] = React.useState("");
-  const [mins, setMin] = React.useState("");
-  const [sec, setSec] = React.useState("");
-
   const startTime = "2020-08-12";
-  let todaysDate = moment(new Date());
-  let diffDays = todaysDate.diff(startTime, "days");
-
-  React.useEffect(() => {
-    setInterval(
-      () => setHour(moment("08:00:00", "HH:mm:ss").fromNow(true)),
-      1000
-    );
-    setInterval(() => setMin(moment().startOf("hour").fromNow(true)), 1000);
-    setInterval(() => setSec(moment().format("s")), 1000);
-  });
+  let diffDays = moment("2020-08-29").diff(startTime, "days");
 
   return (
     <div className="header-container">
@@ -48,9 +34,9 @@ const Header = () => {
           >
             <div className="lockdown-2-container time-container">
               <h3>{`${diffDays} days`}</h3>
-              <h3>{hours}</h3>
-              <h3>{mins}</h3>
-              <h3>{`and ${sec} seconds`}</h3>
+              <h3>10 hours</h3>
+              <h3>15 minutes</h3>
+              <h3>and 32 seconds</h3>
             </div>
           </CustomTooltip>
         </div>

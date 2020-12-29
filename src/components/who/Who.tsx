@@ -17,7 +17,7 @@ const Who = () => {
       <p>
         - Madeleine
         <br />
-        - Zach
+        - Zach (Has since moved out, after second lockdown.)
         <br />
         - Ravid
         <br />
@@ -25,12 +25,12 @@ const Who = () => {
         <br />
         - Michael
         <br />
-        - Buster (now living at his own flat)
-        <br />- Arnie (Ravid's girlfriend)
+        - Buster (Has since moved out, after first lockdown and is now living at his own flat.)
+        <br />- Arnie (Has moved out too, just after the second lockdown.)
       </p>
       <p>
         This site is an art piece which will document the journey which we will
-        go on together during the covid-19 pandemic. we started the isloation
+        go on together during the Covid-19 pandemic. we started the isolation
         process on 19th of March 2020.
       </p>
       <div className="note">
@@ -43,6 +43,14 @@ const Who = () => {
           this is much hard to capture. So take these images with a gain of
           salt, that these are the good times. And that we are all struggling in
           our own ways. Stay safe everyone and love each other and your self.
+        </p>
+      </div>
+      <div className="note">
+        <p>
+          Note: <br /> 29 December
+          <br /> This archive has not been added to since Auckland move back to level 2 back in August.
+          We will continue to add to this site if we going back into another lockdown.
+          Merry Christmas all and have a safe summer, see you in the new year.
         </p>
       </div>
     </div>

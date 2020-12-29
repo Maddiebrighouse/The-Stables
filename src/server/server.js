@@ -30,11 +30,13 @@ const start = async () => {
         posts: async () => {
           return await Posts.find({}).sort({ date: -1 }).toArray();
         },
+        // @ts-ignore
         days: async (parent, args, context) => {
           return await Posts.find({ day: args.day })
             .sort({ date: +1 })
             .toArray();
         },
+        // @ts-ignore
         people: async (parent, args, context) => {
           return await Posts.find({ tags: args.tags })
             .sort({ date: +1 })
@@ -43,6 +45,7 @@ const start = async () => {
       },
     };
     const schema = makeExecutableSchema({
+      // @ts-ignore
       typeDefs: require("../graphql/schema.ts"),
       resolvers,
     });
