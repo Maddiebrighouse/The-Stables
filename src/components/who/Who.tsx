@@ -9,7 +9,7 @@ const Who = () => {
         <Link to={"/"}>X</Link>
       </div>
       <h1 className="who-header">
-        The Stables is home to 5 flat mates and a giant horse lantern...
+        The Stables is home to 5 flat mates, one little black cat and a giant horse lantern...
       </h1>
       <p>
         In the current circumstance, people living here at The Stables are...
@@ -17,16 +17,24 @@ const Who = () => {
       <p>
         - Madeleine
         <br />
-        - Zach (Has since moved out, after second lockdown.)
+        - Sophia (Moved in just after second lockdown)
         <br />
         - Ravid
         <br />
         - Loewn
         <br />
+        - Nathan (Stay during forth lockdown to be with Loewn)
+        <br />
         - Michael
+        <br /> 
+        - Jiji (The Cat we got after the second lockdown)
+        <br /> 
         <br />
         - Buster (Has since moved out, after first lockdown and is now living at his own flat.)
-        <br />- Arnie (Has moved out too, just after the second lockdown.)
+        <br />
+        - Arnie (Has moved out too, just after the second lockdown.)
+        <br />
+        - Zach (Has since moved out, after second lockdown.)
       </p>
       <p>
         This site is an art piece which will document the journey which we will
