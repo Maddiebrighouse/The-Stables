@@ -38,7 +38,6 @@ const Days = (props: Props, state: State) => {
     setListDays(list.concat(listFourth));
   }, []);
 
-  console.log(listDays);
   return (
     <div className="days-container">
       {listDays.map((day: Number, i) => {

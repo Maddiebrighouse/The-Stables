@@ -42,7 +42,6 @@ const Gallery = (props: String) => {
       variables: { tags: filterPeople },
     };
   }
-  console.log(whichQuery);
   const [{ fetching, data, error }] = useQuery(whichQuery);
   console.log(error);
 
