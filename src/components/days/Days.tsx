@@ -24,9 +24,21 @@ const Days = (props: Props, state: State) => {
     for (let i = 0; i < diffDays; i++) {
       list.push(noPhotoDays++);
     }
-    setListDays(list);
+
+    let listFourth: number[] = [ 331, 332, 333, 337];
+    let fourthlLockDown = 337;
+    let fourthLockStart = "2021-02-28";
+    let todaysDate = moment();
+    let diffDates = todaysDate.diff(fourthLockStart, "days");
+  
+    while (listFourth.length -4 < diffDates){
+      fourthlLockDown = fourthlLockDown + 1
+      listFourth.push(fourthlLockDown);
+    }
+    setListDays(list.concat(listFourth));
   }, []);
 
+  console.log(listDays);
   return (
     <div className="days-container">
       {listDays.map((day: Number, i) => {
@@ -39,5 +51,6 @@ const Days = (props: Props, state: State) => {
     </div>
   );
 };
+
 
 export default Days;
