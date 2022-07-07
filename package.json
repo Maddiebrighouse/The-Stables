@@ -35,7 +35,7 @@
     "graphql-server-express": "^1.4.1",
     "graphql-tag": "^2.10.3",
     "graphql-tools": "^5.0.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "mongodb": "^3.5.5",
     "node-sass": "^4.13.1",
     "nodemon": "^1.18.10",
